@@ -1,0 +1,88 @@
+﻿body { margin: 0;font-family:consolas; }
+.row, .col { overflow: hidden; position: absolute; }
+.row { left: 0; right: 0; }
+.col { top: 0; bottom: 0; }
+.scroll-x { overflow-x: auto; }
+.scroll-y { overflow-y: auto; }
+
+.gameTile
+{
+	background-color:green;	
+}
+
+.nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+padding-top: 1em;
+}
+
+.nav ul li a
+{
+	background-color:green;
+	line-height:60px;
+	width:60px;
+	height:60px;
+	padding:10px;
+}
+
+.container
+{
+	margin:20px;
+}
+
+.left.col { width: 50px; outline:red solid thick;}
+.right.col { left: 50px; right: 0; }
+.header.row { height: 75px; line-height: 75px; outline:#00FF00 solid thick;}
+.body.row { top: 75px; bottom: 50px; outline:blue solid thick;}
+.footer.row { height: 50px; bottom: 0; line-height: 50px; }
+
+.answer
+{
+    background-color:Silver;
+    width:40px;
+    text-align:center;
+	font-size:larger;
+}
+
+#questionContainer
+{
+	margin-left:0px;
+}
+.questionPart
+{
+    width:20px;
+    float:left;
+    text-align:center;
+}
+
+.question
+{
+	float:left;
+	width:150px;
+	height:30px;
+	line-height:30px;
+	
+}
+#question.correct
+{
+}
+
+
+#questionGrid input
+{
+	width:50px;
+	height:25px;
+	margin-right:20px;
+}
+
+input[type=text]
+{
+	border:1px solid black;
+}
+
+.questionRow
+{
+	clear:left;
+	padding:5px;
+}

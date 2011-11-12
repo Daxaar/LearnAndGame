@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>arrays</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Darren Lewis">
+	<!-- Date: 2011-10-26 -->
+	<script src="Scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
+	<script src="underscore.1.2.1.debug.js" type="text/javascript"></script>
+	<script src="backbonesample.js" type="text/javascript"></script>
+	
+	<style>
+		.box
+		{
+			float:left;
+			border:1px solid black;
+			height:40px;
+			width:40px;
+		}
+	</style>
+</head>
+<body>
+<!--
+	<div class="box" style="float:left;border:1px solid black;width:40px;height:40px;background-color:red"></div>
+	<div class="box" style="float:left;border:1px solid black;width:40px;height:40px;background-color:green"></div>
+	<div class="box" style="float:left;border:1px solid black;width:40px;height:40px;background-color:orange"></div>
+	<div class="box" style="float:left;border:1px solid black;width:40px;height:40px;background-color:purple"></div>
+	<div class="box" style="float:left;border:1px solid black;width:40px;height:40px;background-color:blue"></div>
+-->
+<div class="box" style="background-color:red"></div>
+<div class="box" style="background-color:green"></div>
+<div class="box" style="background-color:orange"></div>
+<div class="box" style="background-color:purple"></div>
+
+<div class="box" style="clear:left;background-color:blue"></div>
+<div class="box" style="background-color:yellow"></div>
+<div class="box" style="background-color:silver"></div>
+<div class="box" style="background-color:white"></div>
+
+<p style="clear:left">Here is some text</p>
+
+</body>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+		var result = namespace.add(999,999);
+		
+		console.log(result);
+		console.log(namespace.myvariable);
+		
+        viewModel = {
+            questions: [[{ name: "darren", age: 38 }, { name: "milly", age: 8}], [{ name: "finley", age: 7 }, { name: "bob", age: 21}]]
+        };
+
+        console.log(viewModel.questions[1][1].name);
+        console.log(viewModel.questions.length);
+
+        var flat = _.flatten(viewModel.questions);
+
+        console.log("original = " + viewModel.questions[0][0].name);
+        console.log("new = " + flat[0].name);
+        flat[0].name = "Valentino";
+        console.log("---------------------------");
+        console.log("original = " + viewModel.questions[0][0].name);
+        console.log("new = " + flat[0].name);
+        //console.log(flat.length);
+    });
+	
+</script>
+</html>

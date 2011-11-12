@@ -1,0 +1,53 @@
+.container
+{
+	margin:20px;
+}
+.answer
+{
+	float:left;
+	font-size:larger;
+	text-align:center;
+	margin-right:20px;
+}
+
+#questionContainer
+{
+	margin-left:0px;
+}
+.questionPart
+{
+    width:20px;
+    float:left;
+    text-align:center;
+}
+
+.question
+{
+	float:left;
+	width:150px;
+	height:30px;
+	line-height:30px;
+	
+}
+#question.correct
+{
+}
+
+
+#questionGrid input
+{
+	width:50px;
+	height:25px;
+	
+}
+
+.questionRow
+{
+	clear:left;
+	height:4em;
+}
+
+.container select
+{
+	width:40%;
+}
