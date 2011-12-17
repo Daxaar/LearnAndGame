@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>math</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
-	<meta name="author" content="Darren Lewis">
+	<meta name="generator" content="TextMate http://macromates.com/"/>
+	<meta name="author" content="Darren Lewis"/>
 <!--	
 	<script src="//cloud.github.com/downloads/SteveSanderson/knockout/knockout-1.3.0beta.debug.js" type="text/javascript"></script>
 -->
@@ -82,6 +82,11 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+        if (!window.console) {
+            window.console = {
+                log: function (data) { }
+            };
+        }
         $('button').button();
 
         $("#createQuestions").click(function () {
@@ -100,21 +105,23 @@
             };
             $('#timer').countdown('destroy');
             $('#timer').countdown({ until: viewModel.timeOptionSelected() * 60,
-                                    onTick: watchCountdown,
-                                    format: 'MS',
-                                    tickInterval: 5, 
-                                    onExpiry: disableGrid});
+                onTick: watchCountdown,
+                format: 'MS',
+                tickInterval: 5,
+                onExpiry: disableGrid
+            });
         });
-                            //viewModel.timeOptionSelected() * 60
+        //viewModel.timeOptionSelected() * 60
         function watchCountdown(periods) {
             viewModel.timeLeft(periods[5] + periods[6]);
             console.log(viewModel.timeLeft());
+
         }
 
 
         function disableGrid() {
             viewModel.outOfTime(true);
-            $("#questionContainer").css({opacity:1,display:'block'}).animate({opacity:0.5},1000);
+            $("#questionContainer").css({ opacity: 1, display: 'block' }).animate({ opacity: 0.5 }, 1000);
         }
 
         ko.applyBindings(viewModel);
