@@ -16,7 +16,6 @@ function Question(leftNumber,rightNumber,sign){
     this.left = ko.observable(leftNumber);
 	this.right = ko.observable(rightNumber);
 	this.sign = ko.observable(sign);
-	this.someValue = 100;
 	
 	this.correctAnswer = function(){
 		if(self.sign() === "+"){
@@ -39,35 +38,31 @@ function Question(leftNumber,rightNumber,sign){
 
 
 var viewModel = {
-    questionTypes: ko.observableArray(
-		[{ text: 'Addition', value: '+' }, { text: 'Subtraction', value: '-' }, { text: 'Multiplication', value: 'x'}]),
-    questionTypeSelected: ko.observable(),
-    timeOptions: ko.observableArray([1, 2, 3, 4, 5, 6, 7]),
-    timeOptionSelected: ko.observable(7),
-
-    highestNumber: ko.observable(10),
-    nextNumber: function () {
+	questionTypes: ko.observableArray(
+		[{text:'Addition',value:'+'},{text:'Subtraction',value:'-'},{text:'Multiplication',value:'x'}]),
+	questionTypeSelected: ko.observable(),
+	timeOptions: ko.observableArray([1,2,3,4,5,6,7]),
+	timeOptionSelected: ko.observable(7),
+    
+	highestNumber: ko.observable(10),
+    nextNumber: function(){
         return Math.floor(Math.random() * this.numberBondsToSelected());
     },
-    numberOfQuestions: ko.observableArray([10, 20, 30, 40]),
-    numberOfQuestionsSelected: ko.observable(40),
+	numberOfQuestions: ko.observableArray([10,20,30,40]),
+	numberOfQuestionsSelected: ko.observable(40),
 
-    numberBondsTo: ko.observableArray([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]),
-    numberBondsToSelected: ko.observable(10),
+	numberBondsTo: ko.observableArray([10,20,30,40,50,60,70,80,90,100]),
+	numberBondsToSelected: ko.observable(10),
 
-    firstName: ko.observable("Darren"),
-    lastName: ko.observable("Lewis"),
-    //This is an observable array of question arrays 
-    //(bit funky but it gets us the column based layout) 
-    questionGrid: ko.observableArray([]),
-    outOfTime: ko.observable(false),
+	firstName: ko.observable("Darren"),
+	lastName: ko.observable("Lewis"),
+	//This is an observable array of question arrays 
+	//(bit funky but it gets us the column based layout) 
+	questionGrid: ko.observableArray([]),
+	outOfTime: ko.observable(false),
     timeLeft: ko.observable(60),
-    games: ko.observableArray([{ name: "Number Bonds" }, { name: "Number Lines" }, { name: "Spelling" }, { name: "Reading"}])
+	games: ko.observableArray([{name:"Number Bonds"},{name:"Number Lines"},{name:"Spelling"},{name:"Reading"}])
 };
-
-viewModel.isOutOfTime = ko.dependentObservable(function () {
-    return this.timeLeft <= 0;
-}, viewModel);
 
 viewModel.allQuestions = ko.dependentObservable(function(){
 	var total=0;

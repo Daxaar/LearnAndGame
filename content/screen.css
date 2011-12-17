@@ -31,8 +31,8 @@ padding-top: 1em;
 	margin:20px;
 }
 
-.left.col { width: 50px; outline:red solid thick;}
-.right.col { left: 50px; right: 0; }
+.left.col { width: 150px; outline:red solid thick;}
+.right.col { left: 150px; right: 0; }
 .header.row { height: 75px; line-height: 75px; outline:#00FF00 solid thick;}
 .body.row { top: 75px; bottom: 50px; outline:blue solid thick;}
 .footer.row { height: 50px; bottom: 0; line-height: 50px; }

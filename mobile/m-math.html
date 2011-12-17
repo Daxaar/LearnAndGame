@@ -23,12 +23,12 @@
 <div data-role="page" id="homePage">
 
 	<div data-role="header">
-		<h1>Learn and Game</h1>
+		<h1>Welcome to Learn and Game</h1>
 		<a href="#numberBondsCriteriaPage" data-transition="slide">Number Bonds</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<p>Page content goes here.</p>		
+		<p>Page content goes here....</p>		
 	</div><!-- /content -->
 
 	<div data-role="footer">
@@ -82,8 +82,8 @@
 						<div class="questionPart" data-bind="text: sign()"></div>
 						<div class="questionPart" data-bind="text: right()"></div>
 
-						<input class="answer" type="text" 
-						data-bind="disable: $root.timeLeft() === 0,value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
+						<input class="answer" type="number" 
+						data-bind="disable: $root.timeLeft() === 0,value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }"/>
 					</div>
 				</div>
 			</div>
@@ -100,42 +100,47 @@
 
 
 <script type="text/javascript">
-	$(document).ready(function () {
-		document.body.style.webkitTransform = "scale(1.1)";
-		$("#createQuestions").click(function () {
-			viewModel.questionGrid.removeAll();
-			var columnCount = 4;
-			var rowCount = viewModel.numberOfQuestionsSelected() / columnCount;
+    $(document).ready(function () {
+        //document.body.style.webkitTransform = "scale(1.0)";
+        $("#createQuestions").click(function () {
+            viewModel.questionGrid.removeAll();
+            var columnCount = 4;
+            var rowCount = viewModel.numberOfQuestionsSelected() / columnCount;
 
-			for (j = 0; j < rowCount; j++) {
-				viewModel.questionGrid.push({ questionRow: ko.observableArray() });
-				for (i = 0; i < columnCount; i++) {
-					var question = new Question(viewModel.nextNumber(), viewModel.nextNumber(), viewModel.questionTypeSelected());
-					viewModel.questionGrid()[j].questionRow.push(question);
-				};
-			};
-			$('#timer').countdown('destroy');
-			$('#timer').countdown({ until: viewModel.timeOptionSelected() * 60,
-									onTick: watchCountdown,
-									format: 'MS',
-									tickInterval: 5,
-									onExpiry: disableGrid
-									});
-			$.mobile.changePage("#questionsPage", { transition: "slide" });
-		});
-							//viewModel.timeOptionSelected() * 60
-		function watchCountdown(periods) {
-			viewModel.timeLeft(periods[5] + periods[6]);
-			console.log(viewModel.timeLeft());
-		}
+            for (j = 0; j < rowCount; j++) {
+                viewModel.questionGrid.push({ questionRow: ko.observableArray() });
+                for (i = 0; i < columnCount; i++) {
+                    var question = new Question(viewModel.nextNumber(), viewModel.nextNumber(), viewModel.questionTypeSelected());
+                    viewModel.questionGrid()[j].questionRow.push(question);
+                };
+            };
+            $('#timer').countdown('destroy');
+            $('#timer').countdown({ until: viewModel.timeOptionSelected() * 60,
+                //onStart: enableGrid,
+                onTick: watchCountdown,
+                format: 'MS',
+                tickInterval: 5,
+                onExpiry: disableGrid
+            });
+            $.mobile.changePage("#questionsPage", { transition: "slide" });
+        });
+        //viewModel.timeOptionSelected() * 60
+        function watchCountdown(periods) {
+            viewModel.timeLeft(periods[5] + periods[6]);
+            console.log(viewModel.timeLeft());
+        }
 
+        function enableGrid() {
+            viewModel.outOfTime(false);
+            $("#questionContainer").css({ opacity: 1, display: 'block' });
+        }
 
-		function disableGrid() {
-			viewModel.outOfTime(true);
-			$("#questionContainer").css({opacity:1,display:'block'}).animate({opacity:0.5},1000);
-		}
+        function disableGrid() {
+            viewModel.outOfTime(true);
+            $("#questionContainer").css({ opacity: 1, display: 'block' }).animate({ opacity: 0.5 }, 1000);
+        }
 
-		ko.applyBindings(viewModel);
-	});
+        ko.applyBindings(viewModel);
+    });
 </script>
 </html>
