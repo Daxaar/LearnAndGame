@@ -1,0 +1,1 @@
+A test project for learning knockout.js.  It's a very simple (and currently incomplete) math game as used commonly in UK schools called the 7 minute club.  You can specify parameters for the test including timing, number and difficulty of questions.
