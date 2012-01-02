@@ -1,4 +1,5 @@
 bin/
+*.tmproj
 obj/
 .DS_Store
 .idea/
