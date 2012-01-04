@@ -86,3 +86,38 @@ input[type=text]
 	clear:left;
 	padding:5px;
 }
+
+
+#scorebox{
+	background-color:green;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	height:30%;
+	padding:20px;
+	margin-top:-10px;
+	padding-top:0px;
+	width:70%;
+	border:1px solid black;
+	color:black;
+	text-shadow:1px 1px 0 white;
+	font-family:'Myriad Pro',Arial,Helvetica,sans-serif;
+	text-align:center;
+}
+
+div.scroll {
+	margin-top:0;
+	margin-right: 0;
+	word-wrap: break-word;
+	height: 95%;
+	width: 450px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #666;
+	background-color: #ccc;
+	padding: 8px;
+	font-size:0.7em;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+}

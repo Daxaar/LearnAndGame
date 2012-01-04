@@ -1,14 +1,9 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>math</title>
-	<meta name="generator" content="TextMate http://macromates.com/">
+	<title>Minute Math Club</title>
 	<meta name="author" content="Darren Lewis">
-<!--	
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-	<script src="//cloud.github.com/downloads/SteveSanderson/knockout/knockout-1.3.0beta.debug.js" type="text/javascript"></script>
--->
 	
 	<script src="Scripts/jquery-1.6.4.min.js" type="text/javascript"></script>
 	<script src="Scripts/knockout-1.3.0beta.debug.js" type="text/javascript"></script>
@@ -21,9 +16,12 @@
 	<link href="content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 	<script src="Scripts/jquery-ui-1.8.16.js" type="text/javascript"></script>
+	<script src="Scripts/jquery.bouncebox.1.0.js" type="text/javascript"></script>
+<script src="Scripts/jquery.easing.1.3.js" type="text/javascript"></script>
 </head>
 <body>
-	
+		
+
 	<div class="nav left col">
 		<ul>
 			<!-- ko foreach: games-->
@@ -33,12 +31,7 @@
 	</div>
 	<div class="right col">
 		<div class="header row">
-<!--			<div class="container">
-			Some header text
-			<input type="text" data-bind="value: firstName"/>
-			<input type="text" data-bind="value: lastName"/>
-			</div>
--->		</div>
+		</div>
 		<div class="body row scroll-y">
 			<div class="container">
 			<div id="#criteria">
@@ -47,8 +40,7 @@
 				<label>Time:</label><select data-bind="options: timeOptions, value:timeOptionSelected"></select>
 				<label>Type:</label><select data-bind="options: questionTypes, optionsText: 'text', optionsValue: 'value', value:questionTypeSelected"></select>
 				<div>
-				<button id="createQuestions">Create</button>
-				<button id="scoreQuestions">Score</button>
+				<button id="createQuestions" data-bind="text: isComplete() ? 'Finish' : 'Start'"></button>
 				</div>
 			</div>
 
@@ -56,7 +48,7 @@
 			<div id="timer" style="width:120px"></div>
 			<h3 style="clear:both" data-bind="text: 'Completed ' + answeredQuestions().length + ' out of ' + numberOfQuestionsSelected()"></h3>	
 
-			<div id="questionContainer">
+			<div id="questionContainer" data-bind="toggleGrid: isComplete()">
 				<div id="questionGrid" data-bind="foreach: questionGrid">
 					<div class="questionRow" data-bind="foreach:questionRow">
 						<div class="question">
@@ -65,7 +57,7 @@
 							<div class="questionPart" data-bind="text: right()"></div>
 
 							<input class="answer" style="float:left" type="text" 
-							data-bind="disable: $root.timeLeft() === 0,value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
+							data-bind="disable: $root.isComplete(),value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
 						</div>
 					</div>
 				</div>
@@ -77,69 +69,40 @@
 			Some status message here
 		</div>
 	</div>
+
+	<div id="scorebox" data-bind="visible: isComplete(), animateVisible: isComplete(), click:reset">
+		<h2 data-bind="visible:outOfTime()">Time's Up!</h2>
+		<h2 data-bind="text: 'You scored ' + score() + ' out of ' + numberOfQuestionsSelected()"></h2>
+		<h2 id="scoreMessage"></h2>
+	</div>
+
+	<div class="scroll" data-bind="text:ko.toJSON(viewModel), visible: isComplete() == false"></div> 
 </body>
 
 <script type="text/javascript">
     $(document).ready(function () {
-
+        
         $('button').button();
 
         $("#createQuestions").click(function () {
-            viewModel.questionGrid.removeAll(); //  = ko.observableArray([]);
-            var columnCount = 5;
-            var rowCount = viewModel.numberOfQuestionsSelected() / columnCount;
 
-            //var grid = { columns: 5, rows: viewModel.numberOfQuestionsSelected() / this.columns };
+        	viewModel.reset({columnCount:5});	
+            
+            viewModel.timeOptionSelected(0.5);
+            console.log('time adjusted to: ' + viewModel.timeOptionSelected());
 
-            for (j = 0; j < rowCount; j++) {
-                viewModel.questionGrid.push({ questionRow: ko.observableArray() });
-                for (i = 0; i < columnCount; i++) {
-                    var question = new Question(viewModel.nextNumber(), viewModel.nextNumber(), viewModel.questionTypeSelected());
-                    viewModel.questionGrid()[j].questionRow.push(question);
-                };
-            };
             $('#timer').countdown('destroy');
             $('#timer').countdown({ until: viewModel.timeOptionSelected() * 60,
-                                    onTick: watchCountdown,
                                     format: 'MS',
                                     tickInterval: 5, 
-                                    onExpiry: disableGrid});
+                                    onExpiry: function(){
+	                                    viewModel.outOfTime(true);
+	                                    viewModel.score();
+	                                    }});
         });
-                            //viewModel.timeOptionSelected() * 60
-        function watchCountdown(periods) {
-            viewModel.timeLeft(periods[5] + periods[6]);
-            console.log(viewModel.timeLeft());
-        }
 
-
-        function disableGrid() {
-            viewModel.outOfTime(true);
-            $("#questionContainer").css({opacity:1,display:'block'}).animate({opacity:0.5},1000);
-        }
-
+        console.log('applying bindings');
         ko.applyBindings(viewModel);
     });
 </script>
-
-
 </html>
-
-<!--
-<table border=1 id="questionGrid">
-		<tbody data-bind="foreach: questionGrid">
-			<tr data-bind="foreach: questionRow">
-				<td style="width:25px;text-align:center" data-bind="text: left()"></td>
-				<td style="width:25px;text-align:center">+</td>
-				<td style="width:25px;text-align:center" data-bind="text: right()"></td>
-				<td>
-					<input class="answer" type="text" 
-						data-bind="attr: { enable: $root.outOfTime()},
-						value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
-				</td>
-			</tr>
-		</tbody>
-	</table>
--->
-	<!--
-	<div style="font-size:10px;clear:both;padding-top:30px" data-bind="text: ko.toJSON(viewModel)"></div>
-	-->
