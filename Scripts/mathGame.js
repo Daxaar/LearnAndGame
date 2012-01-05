@@ -83,7 +83,6 @@ var viewModel = {
 		return 0;
 	},
 
-
 	scoreMessage: function() 
 	{
 		var message = "Not bad.  Have another go to try and improve your score";
@@ -166,7 +165,7 @@ ko.bindingHandlers.animateVisible = {
         	var scoreMessage = viewModel.scoreMessage();
 			console.log('score message = ' + scoreMessage);
 			$(element).bounceBoxToggle();
-			$("#scoreMessage").text(viewModel.scoreMessage);
+			$("#scoreMessage").text(scoreMessage);
 			$('#timer').countdown('destroy');
         }
         else {
