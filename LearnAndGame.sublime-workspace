@@ -1,0 +1,609 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"startT",
+				"startTime  (variable)"
+			],
+			[
+				"format",
+				"formatGameTime"
+			],
+			[
+				"font-fam",
+				"font-family:   (property)"
+			],
+			[
+				"dependen",
+				"dependentObservable"
+			],
+			[
+				"select",
+				"selection	selection"
+			],
+			[
+				"back",
+				"background	background: color image repeat attachment position"
+			],
+			[
+				"gett",
+				"getTime  (function)"
+			],
+			[
+				"start",
+				"startTime"
+			],
+			[
+				"view",
+				"viewModel"
+			],
+			[
+				"depe",
+				"dependentObservable"
+			],
+			[
+				"get",
+				"getTime  (function)"
+			],
+			[
+				"gettime",
+				"getTime  (function)"
+			],
+			[
+				"ob",
+				"observable"
+			],
+			[
+				"now",
+				"window"
+			],
+			[
+				"le",
+				"length  (variable)"
+			],
+			[
+				"all",
+				"allQuestionsAnswered"
+			],
+			[
+				"numbe",
+				"numberOfQuestionsSelected"
+			],
+			[
+				"answered",
+				"answeredQuestions"
+			],
+			[
+				"score",
+				"scoreMessage"
+			],
+			[
+				"visi",
+				"visible  (function)"
+			],
+			[
+				"outOf",
+				"outOfTime"
+			],
+			[
+				"number",
+				"numberOfQuestionsSelected"
+			],
+			[
+				"num",
+				"numberOfQuestionsSelected  (variable)"
+			],
+			[
+				"allQuestionsAn",
+				"allQuestionsAnswered"
+			],
+			[
+				"else",
+				"else"
+			],
+			[
+				"scoreMes",
+				"scoreMessages"
+			],
+			[
+				"numberofQ",
+				"numberOfQuestionsSelected"
+			],
+			[
+				"is",
+				"isComplete  (variable)"
+			],
+			[
+				"dis",
+				"disabled  (function)"
+			],
+			[
+				"margin-rig",
+				"margin-right:   (property)"
+			],
+			[
+				"overflow-",
+				"overflow-y:   (property)"
+			],
+			[
+				"depend",
+				"dependentObservable"
+			],
+			[
+				"sco",
+				"score"
+			],
+			[
+				"value",
+				"valueAccessor"
+			],
+			[
+				"animate",
+				"animateVisible"
+			],
+			[
+				"allb",
+				"allBindingsAccessor"
+			],
+			[
+				"valueA",
+				"valueAccessor"
+			],
+			[
+				"bind",
+				"bindingHandlers  (namespace)"
+			],
+			[
+				"out",
+				"outOfTime"
+			],
+			[
+				"time",
+				"timeOptionSelected"
+			],
+			[
+				"obser",
+				"observable"
+			],
+			[
+				"border-radiu",
+				"border-radius:   (property)"
+			],
+			[
+				"border-ra",
+				"-moz-border-radius:   (property)"
+			],
+			[
+				"gree",
+				"green"
+			],
+			[
+				"background-",
+				"background-color"
+			],
+			[
+				"text-al",
+				"text-align"
+			],
+			[
+				"h1",
+				"h1  (element)"
+			],
+			[
+				"answ",
+				"answered"
+			],
+			[
+				"answere",
+				"answered"
+			],
+			[
+				"answeredq",
+				"answeredQuestions"
+			],
+			[
+				"columnCou",
+				"columnCount"
+			],
+			[
+				"pr",
+				"prototype"
+			],
+			[
+				"age",
+				"age"
+			],
+			[
+				"fir",
+				"firstName  (variable)"
+			],
+			[
+				"lastNA",
+				"lastName"
+			],
+			[
+				"firstN",
+				"firstName"
+			],
+			[
+				"firstName",
+				"firstName"
+			],
+			[
+				"someone",
+				"someoneelse"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "math.html",
+			"settings":
+			{
+				"buffer_size": 4528,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "content/screen.css",
+			"settings":
+			{
+				"buffer_size": 2046,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/mathGame.js",
+			"settings":
+			{
+				"buffer_size": 6031,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/Users/Darren/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Base File.sublime-settings",
+			"settings":
+			{
+				"buffer_size": 3862,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/User/html.sublime-build",
+	"command_palette":
+	{
+		"height": 247.0,
+		"selected_items":
+		[
+			[
+				"lint",
+				"JSLint: Run JSLint"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"sub",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"subl",
+				"SublimeLinter: Lint Current File"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"li",
+				"SublimeLinter: Lint Current File"
+			],
+			[
+				"lin",
+				"SublimeLinter: Lint Current File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git com",
+				"Set Syntax: Git Commit Message"
+			],
+			[
+				"git commit",
+				"Set Syntax: Git Commit Message"
+			],
+			[
+				"git",
+				"Set Syntax: Git Commit Message"
+			],
+			[
+				"git comm",
+				"Set Syntax: Git Commit Message"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 122.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Darren/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Base File.sublime-settings",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/math.html",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/js/mathGame.js",
+		"/Users/Darren/Library/Application Support/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
+		"/Users/Darren/Library/Application Support/Sublime Text 2/Packages/sublime-jslint/sublime-jslint.sublime-settings",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/packages/jQuery.UI.Combined.1.8.16/Content/Content/themes/base/jquery.ui.theme.css",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/Scripts/jquery-1.6.4-vsdoc.js",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/Scripts/mathGame.js",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/content/screen.css",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/Scripts/jquery.bouncebox.1.0.js",
+		"/Users/Darren/Dropbox/dev/LearnAndGame/mobile/m-math.html",
+		"/Users/Darren/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Default (OSX).sublime-keymap",
+		"/Users/Darren/Dropbox/dev/jsrepo/objects-prototype.js",
+		"/Users/Darren/Dropbox/dev/jsrepo/objects-prototype.html",
+		"/Users/Darren/Dropbox/dev/jsrepo/private-variables.html",
+		"/Users/Darren/Dropbox/dev/jsrepo/private-variables.js",
+		"/Users/Darren/Dropbox/dev/jsrepo/private-variables.sublime-project",
+		"/Users/Darren/Dropbox/dev/jsrepo/objects.html",
+		"/Users/Darren/Dropbox/dev/jsrepo/objects.js",
+		"/Users/Darren/Library/Application Support/Sublime Text 2/Packages/User/html.sublime-build",
+		"/Users/Darren/Dropbox/dev/testrepo/second",
+		"/Users/Darren/Dropbox/dev/testrepo/first",
+		"/Users/Darren/Dropbox/dev/testrepo/untitled",
+		"/Users/Darren/Dropbox/dev/Claims Questions",
+		"/Users/Darren/Dropbox/dev/person.js",
+		"/Users/Darren/Dropbox/dev/test.html",
+		"/Users/Darren/Dropbox/dev/test.js",
+		"/Users/Darren/Dropbox/dev/firstjs.sublime-project"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"extend",
+			"score",
+			"timeLeft",
+			"console",
+			"changeEnterToTab",
+			"pagewrap"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "math.html",
+					"settings":
+					{
+						"buffer_size": 4528,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3113,
+								3113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 944.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "content/screen.css",
+					"settings":
+					{
+						"buffer_size": 2046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1590,
+								1590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1774.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/mathGame.js",
+					"settings":
+					{
+						"buffer_size": 6031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								507,
+								507
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/Darren/Library/Application Support/Sublime Text 2/Packages/SublimeLinter/Base File.sublime-settings",
+					"settings":
+					{
+						"buffer_size": 3862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								338,
+								338
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"math",
+				"js/mathGame.js"
+			],
+			[
+				"score",
+				"packages/jQuery.UI.Combined.1.8.16/Content/Content/themes/base/jquery.ui.theme.css"
+			],
+			[
+				"",
+				"Scripts/mathGame.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/Darren/Dropbox/dev/js-best-practices/js-practices.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 251.0,
+	"status_bar_visible": true
+}

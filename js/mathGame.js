@@ -1,19 +1,15 @@
-﻿/// <reference path="jquery-1.6.4-vsdoc.js" />
-/// <reference path="knockout-1.3.0beta.debug.js" />
-
-
-(function (lg,$){
+﻿(function (lg, ko, $){
 	'use strict';
 
     lg.Question = function (leftNumber, rightNumber, sign){
-    	var self = this;
-    	self.left = ko.observable(leftNumber);
+		var self = this;
+		self.left = ko.observable(leftNumber);
 		self.right = ko.observable(rightNumber);
 		self.sign = ko.observable(sign);
 	
 		self.correctAnswer = function(){
 			if(self.sign() === "+"){
-				return self.left() + self.right();	
+				return self.left() + self.right();
 			}
 			else if(self.sign() === "-"){
 				return self.left() - self.right();
@@ -30,14 +26,33 @@
 			});
 	};
 
-}(window.LearnAndGame = window.LearnAndGame || {}, jQuery));
+	lg.formatGameTime = function (settings){
+		console.log('formatGameTime');
+		console.log(settings.startTime);
+		console.log(settings.endTime);
+
+		var seconds	= Math.floor((settings.endTime - settings.startTime) / 1000);
+		var minutes = Math.floor(seconds / 60);
+		seconds		= seconds % 60;
+		var answer  = "";
+
+		if(minutes > 0)
+		{
+			answer = minutes + " minutes and ";
+		}
+		answer += seconds + " seconds";
+		return answer;
+	};
+
+}(window.LearnAndGame = window.LearnAndGame || {}, ko, jQuery));
 
 var viewModel = {
+	
 	questionTypes: ko.observableArray(
 		[{text:'Addition',value:'+'},{text:'Subtraction',value:'-'},{text:'Multiplication',value:'x'}]),
 	questionTypeSelected: ko.observable(),
-	timeOptions: ko.observableArray([0.4,1,2,3,4,5,6,7]),
-	timeOptionSelected: ko.observable(0.4),
+	timeOptions: ko.observableArray([0.1,1,2,3,4,5,6,7]),
+	timeOptionSelected: ko.observable(0.1),
     
 	highestNumber: ko.observable(10),
 
@@ -49,29 +64,37 @@ var viewModel = {
 
 	firstName: ko.observable("Darren"),
 	lastName: ko.observable("Lewis"),
-	//This is an observable array of question arrays (bit funky but it gets us the column based layout) 
+	//This is an observable array of question arrays (bit funky but it gets us the column based layout)
 	questionGrid: ko.observableArray([]),
 	outOfTime: ko.observable(false),
 	games: ko.observableArray([{name:"Number Bonds"},{name:"Number Lines"},{name:"Spelling"},{name:"Reading"}]),
 	
 	scored: ko.observable(false),
-	
+
+	startTime: ko.observable(0),
+
+	timeTaken: function() {
+		return LearnAndGame.formatGameTime({startTime: this.startTime(), endTime: new Date().getTime()});
+	},
 	nextNumber: function(){
         return Math.floor(Math.random() * this.numberBondsToSelected());
     },
+
 	reset: function (settings){
 		this.questionGrid.removeAll();
 		this.outOfTime(false);
 		this.scored(false);
+		this.startTime(new Date().getTime());
+		
 		var rowCount = this.numberOfQuestionsSelected() / settings.columnCount;
 
-	    for (j = 0; j < rowCount; j++) {
-	        viewModel.questionGrid.push({ questionRow: ko.observableArray() });
-	        for (i = 0; i < settings.columnCount; i++) {
-	            var question = new LearnAndGame.Question(this.nextNumber(), this.nextNumber(), this.questionTypeSelected());
-	            this.questionGrid()[j].questionRow.push(question);
-	        };
-    	};
+		for (j = 0; j < rowCount; j++) {
+			viewModel.questionGrid.push({ questionRow: ko.observableArray() });
+			for (i = 0; i < settings.columnCount; i++) {
+				var question = new LearnAndGame.Question(this.nextNumber(), this.nextNumber(), this.questionTypeSelected());
+				this.questionGrid()[j].questionRow.push(question);
+			}
+		}
 	},
 
 	score: function(){
@@ -83,7 +106,7 @@ var viewModel = {
 		return 0;
 	},
 
-	scoreMessage: function() 
+	scoreMessage: function()
 	{
 		var message = "Not bad.  Have another go to try and improve your score";
 		var score = this.score();
@@ -95,7 +118,7 @@ var viewModel = {
 			message = "Unbelievable!  You got EVERY question right.  You're way too awesome for this.  Perhaps you should try a higher number bond";
 		}
 		else if(score === 0) {
-			message = "I think you need to concentrate a little harder or maybe try a lower number bond."
+			message = "I think you need to concentrate a little harder or maybe try a lower number bond.";
 		}
 		if(this.answeredQuestions().length === this.numberOfQuestionsSelected() ){
 			message = "Nice one!  You answered all the questions in the time allowed and scored " + score;
@@ -107,8 +130,12 @@ var viewModel = {
 	allQuestionsAnswered: function(){
 		console.log('allQuestionsAnswered');
 		return this.answeredQuestions().length == this.numberOfQuestionsSelected();
-	},
+	}
 };
+
+viewModel.gameInProgress = ko.dependentObservable(function(){
+	return this.startTime() > 0 && this.scored() === false && this.isComplete() === false;
+},viewModel);
 
 viewModel.allQuestions = ko.dependentObservable(function(){
 	console.log('allQuestions');
@@ -117,18 +144,18 @@ viewModel.allQuestions = ko.dependentObservable(function(){
 	ko.utils.arrayForEach(this.questionGrid(),function(item){
 		ko.utils.arrayForEach(item.questionRow(),function(question){
 			allquestions.push(question);
-		})
+		});
 	});
 	return allquestions;
 },viewModel).extend({ throttle: 500 });
 
 
 viewModel.answeredQuestions = ko.dependentObservable(function(){
-	console.log('answeredQuestions')
-	return _.filter(this.allQuestions(),function(question){return question.givenAnswer() != "";});
+	console.log('answeredQuestions');
+	return _.filter(this.allQuestions(),function(question){return question.givenAnswer() !== "";});
 },viewModel);
 	
-viewModel.fullName = ko.dependentObservable(function(){	
+viewModel.fullName = ko.dependentObservable(function(){
 	return this.firstName() + ' ' + this.lastName();
 },viewModel);
 
@@ -150,8 +177,8 @@ ko.bindingHandlers.toggleGrid = {
         $(element).css({opacity:1,display:'block'});
 
         console.log('isComplete: ' + value);
-        if (value == true) {
-        	$(element).animate({opacity:0.5},1000);
+        if (value === true) {
+			$(element).animate({opacity:0.5},1000);
         }
     }
 };
@@ -161,8 +188,8 @@ ko.bindingHandlers.animateVisible = {
 		$(element).bounceBox();
 	},
 	update: function(element, valueAccessor, allBindingsAccessor,viewModel) {
-        if(valueAccessor() == true) {
-        	var scoreMessage = viewModel.scoreMessage();
+        if(valueAccessor() === true) {
+			var scoreMessage = viewModel.scoreMessage();
 			console.log('score message = ' + scoreMessage);
 			$(element).bounceBoxToggle();
 			$("#scoreMessage").text(scoreMessage);

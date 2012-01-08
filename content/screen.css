@@ -1,4 +1,4 @@
-﻿body { margin: 0;font-family:consolas; }
+﻿body { margin: 0;font-family:'NobileRegular'; }
 .row, .col { overflow: hidden; position: absolute; }
 .row { left: 0; right: 0; }
 .col { top: 0; bottom: 0; }
@@ -104,20 +104,46 @@ input[type=text]
 	text-align:center;
 }
 
-div.scroll {
+#debug
+{
 	margin-top:0;
 	margin-right: 0;
 	word-wrap: break-word;
-	height: 95%;
-	width: 450px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	border: 1px solid #666;
-	background-color: #ccc;
 	padding: 8px;
 	font-size:0.7em;
     position: fixed;
     top: 0;
     right: 0;
+    font-family:consolas;
+}
 
+.shrink
+{
+	height: 3%;
+	color:#ccc;
+	width:100px;
+	background-color: #ccc;
+	overflow-x: none;
+	overflow-y: none;
+}
+
+.show
+{
+	background-color: #ccc;
+	color:green;
+	height: 95%;
+	width: 450px;
+}
+
+label
+{
+	/*display:block;*/
+}
+
+label + select
+{
+	width:75px;
 }
