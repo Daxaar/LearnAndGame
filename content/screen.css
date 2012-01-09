@@ -7,7 +7,7 @@
 
 .gameTile
 {
-	background-color:green;	
+	/*background-color:green;*/	
 }
 
 .nav ul {
@@ -19,7 +19,7 @@ padding-top: 1em;
 
 .nav ul li a
 {
-	background-color:green;
+	/*background-color:green;*/
 	line-height:60px;
 	width:60px;
 	height:60px;
@@ -31,10 +31,10 @@ padding-top: 1em;
 	margin:20px;
 }
 
-.left.col { width: 150px; outline:red solid thick;}
+.left.col { width: 150px; outline:gray solid 1px;}
 .right.col { left: 150px; right: 0; }
-.header.row { height: 75px; line-height: 75px; outline:#00FF00 solid thick;}
-.body.row { top: 75px; bottom: 50px; outline:blue solid thick;}
+.header.row { height: 75px; line-height: 75px; /*outline:gray solid 1px;*/}
+.body.row { top: 75px; bottom: 50px; outline:gray solid 1px;}
 .footer.row { height: 50px; bottom: 0; line-height: 50px; }
 
 .answer
@@ -89,7 +89,7 @@ input[type=text]
 
 
 #scorebox{
-	background-color:green;
+	background-color:gray;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	height:30%;
@@ -103,6 +103,7 @@ input[type=text]
 	font-family:'Myriad Pro',Arial,Helvetica,sans-serif;
 	text-align:center;
 }
+
 
 #debug
 {
