@@ -45,6 +45,11 @@ padding-top: 1em;
 	font-size:larger;
 }
 
+#timer
+{
+	width:150px;
+	height:100%;
+}
 #questionContainer
 {
 	margin-left:0px;
