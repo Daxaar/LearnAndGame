@@ -50,26 +50,26 @@
 			</div>
 
 
-			<div id="timer"></div>
-			<h3 style="clear:both" 
-				data-bind="visible: gameInProgress() , 
-				text: 'Completed ' + answeredQuestions().length + ' out of ' + numberOfQuestionsSelected()"></h3>	
 
 			<div id="questionContainer" data-bind="toggleGrid: isComplete()">
-				<div id="questionGrid" data-bind="foreach: questionGrid">
-					<div class="questionRow" data-bind="foreach:questionRow">
-						<div class="question">
-							<div class="questionPart" data-bind="text: left()"></div>
-							<div class="questionPart" data-bind="text: sign()"></div>
-							<div class="questionPart" data-bind="text: right()"></div>
+				<h3 id="completionStatus" 
+					data-bind="visible: gameInProgress() , 
+					text: 'Completed ' + answeredQuestions().length + ' out of ' + numberOfQuestionsSelected()"></h3>
+				<div id="timer"></div>
+					<div id="questionGrid" data-bind="foreach: questionGrid">
+						<div class="questionRow" data-bind="foreach:questionRow">
+							<div class="question">
+								<span data-bind="text: left()"></span>
+								<span data-bind="text: sign()"></span>
+								<span data-bind="text: right()"></span>
 
-							<input class="answer" style="float:left" type="text" 
-							data-bind="disable: $root.isComplete(),value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
+								<input class="answer" style="float:left" type="text" 
+								data-bind="disable: $root.isComplete(),value: givenAnswer, style: { color: isCorrect() ? 'green' : 'red' }">
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			</div> <!--container-->
 		</div>
 		
 		<div class="footer row">

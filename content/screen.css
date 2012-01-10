@@ -1,14 +1,11 @@
-﻿body { margin: 0;font-family:'NobileRegular'; }
+﻿
+
+body { margin: 0;font-family:'NobileRegular'; }
 .row, .col { overflow: hidden; position: absolute; }
 .row { left: 0; right: 0; }
 .col { top: 0; bottom: 0; }
 .scroll-x { overflow-x: auto; }
 .scroll-y { overflow-y: auto; }
-
-.gameTile
-{
-	/*background-color:green;*/	
-}
 
 .nav ul {
 list-style: none;
@@ -19,7 +16,6 @@ padding-top: 1em;
 
 .nav ul li a
 {
-	/*background-color:green;*/
 	line-height:60px;
 	width:60px;
 	height:60px;
@@ -45,20 +41,22 @@ padding-top: 1em;
 	font-size:larger;
 }
 
-#timer
-{
-	width:150px;
-	height:100%;
+#timer{
+	width:100%;
+	/*clear:both;*/
+	border-radius:10px;
+	text-align:center;
 }
+#completionStatus{
+	text-align:center;
+}
+
 #questionContainer
 {
 	margin-left:0px;
-}
-.questionPart
-{
-    width:20px;
-    float:left;
-    text-align:center;
+	width:200px;
+	background-color:blue;
+	border-radius:10px;
 }
 
 .question
@@ -69,16 +67,24 @@ padding-top: 1em;
 	line-height:30px;
 	
 }
-#question.correct
+
+.question span
 {
+    width:20px;
+    float:left;
+    text-align:center;
 }
 
+#questionGrid{
+	clear:right;
+}
 
 #questionGrid input
 {
 	width:50px;
 	height:25px;
 	margin-right:20px;
+	border-radius:5px;
 }
 
 input[type=text]
@@ -144,12 +150,31 @@ input[type=text]
 	width: 450px;
 }
 
-label
-{
-	/*display:block;*/
-}
-
 label + select
 {
 	width:75px;
+}
+@media screen and (min-width: 480px){
+
+	#questionContainer{
+		padding:5px;
+		background-color:red;
+		width:800px;
+		float:left;
+		overflow:auto;
+
+	}
+	#timer
+	{
+		width:150px;
+		height:50px;
+		float:right;
+	}
+
+	#completionStatus
+	{
+		float:left;
+		margin:0px;
+	}
+
 }
