@@ -31,7 +31,7 @@ padding-top: 1em;
 .right.col { left: 150px; right: 0; }
 .header.row { height: 75px; line-height: 75px; /*outline:gray solid 1px;*/}
 .body.row { top: 75px; bottom: 50px; outline:gray solid 1px;}
-.footer.row { height: 50px; bottom: 0; line-height: 50px; }
+.footer.row { height: 50px; bottom: 0; /*line-height: 75px;*/ }
 
 .answer
 {
@@ -42,10 +42,12 @@ padding-top: 1em;
 }
 
 #timer{
-	width:100%;
+	width:150px;
 	/*clear:both;*/
-	border-radius:10px;
+	border-radius:0px;
 	text-align:center;
+	/*display:inline-block;*/
+	float:left;
 }
 #completionStatus{
 	text-align:center;
@@ -103,11 +105,11 @@ input[type=text]
 	background-color:gray;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	height:30%;
+	height:20%;
 	padding:20px;
 	margin-top:-10px;
 	padding-top:0px;
-	width:70%;
+	width:50%;
 	border:1px solid black;
 	color:black;
 	text-shadow:1px 1px 0 white;
@@ -158,7 +160,7 @@ label + select
 
 	#questionContainer{
 		padding:5px;
-		background-color:red;
+		background-color:transparent;
 		width:800px;
 		float:left;
 		overflow:auto;
@@ -168,7 +170,6 @@ label + select
 	{
 		width:150px;
 		height:50px;
-		float:right;
 	}
 
 	#completionStatus

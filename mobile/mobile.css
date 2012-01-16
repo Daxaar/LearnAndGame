@@ -5,7 +5,7 @@
 .answer
 {
 	float:left;
-	font-size:larger;
+	font-size:2.0em;
 	text-align:center;
 	margin-right:20px;
 }
@@ -47,8 +47,13 @@
 	height:4em;
 }
 
-
-select
-{
-	width:40%;
+@media screen and (max-width: 280px){
+	.question
+	{
+		width:150px;
+		height:40px;
+		line-height:30px;
+		clear:both;
+		padding:5px;
+	}
 }

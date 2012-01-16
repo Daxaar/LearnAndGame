@@ -52,10 +52,6 @@
 
 
 			<div id="questionContainer" data-bind="toggleGrid: isComplete()">
-				<h3 id="completionStatus" 
-					data-bind="visible: gameInProgress() , 
-					text: 'Completed ' + answeredQuestions().length + ' out of ' + numberOfQuestionsSelected()"></h3>
-				<div id="timer"></div>
 					<div id="questionGrid" data-bind="foreach: questionGrid">
 						<div class="questionRow" data-bind="foreach:questionRow">
 							<div class="question">
@@ -73,25 +69,25 @@
 		</div>
 		
 		<div class="footer row">
-			Some status message here
+			<div id="timer"></div>
+			<h3 id="completionStatus" data-bind="visible: gameInProgress() , 
+					text: 'Completed ' + answeredQuestions().length + ' out of ' + numberOfQuestionsSelected()"></h3>
 		</div>
 	</div>
 
 	<div id="scorebox" data-bind="visible: isComplete(), animateVisible: isComplete(), click:reset">
-		<h2 data-bind="visible:outOfTime()">Time's Up!</h2>
-		<h2 data-bind="text: 'You scored ' + score() + ' out of ' + numberOfQuestionsSelected() + ' in ' + timeTaken()"></h2>
-		<h2 id="scoreMessage"></h2>
+		<h3 data-bind="visible:outOfTime()">Time's Up!</h3>
+		<h3 data-bind="text: 'You scored ' + score() + ' out of ' + numberOfQuestionsSelected() + ' in ' + timeTaken()"></h3>
+		<h3 id="scoreMessage"></h3>
 	</div>
 
-	<div id="debug" class="show" data-bind="text:ko.toJSON(viewModel)"></div> 
+	<!--<div id="debug" class="show" data-bind="text:ko.toJSON(viewModel)"></div>-->
 </body>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
         
-        //$('button').button();
-
         $("#debug").click(function(){
         	$(this).toggleClass('shrink show')
         });
