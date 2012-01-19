@@ -51,13 +51,14 @@ padding-top: 1em;
 }
 #completionStatus{
 	text-align:center;
+	margin:5px 0 0 20px;
+
 }
 
 #questionContainer
 {
 	margin-left:0px;
 	width:200px;
-	background-color:blue;
 	border-radius:10px;
 }
 
@@ -175,7 +176,7 @@ label + select
 	#completionStatus
 	{
 		float:left;
-		margin:0px;
+		margin:15px 0 0 20px;
 	}
 
 }
