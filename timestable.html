@@ -46,6 +46,7 @@
   <input type="text" data-bind="value:timesTable"/>
   <select data-bind="options: questionCount, value:questionCountSelected"></select>
   <input type="button" data-bind="click:createQuestions" value="Create Questions"></button>
+  <p data-bind="text: 'Questions answered: ' + questionsAnswered()"></p>
   <div id="board">
       <!-- ko foreach: questions-->
       <div class="question">
@@ -53,7 +54,7 @@
         <div data-bind="text:operator"></div>
         <div data-bind="text:right"></div>
         <div>=</div>
-        <input class="answer" type="text" data-bind="value:givenAnswer()"/>
+        <input class="answer" type="text" data-bind="value:givenAnswer"/>
         <div data-bind="visible:$root.answersVisible, text:correctAnswer()"></div>
       </div>
       <!-- /ko -->
@@ -75,6 +76,10 @@ function ViewModel(){
   self.showAnswers           = function(){
     this.answersVisible(!this.answersVisible());
   };
+  
+  self.selectedquestioncount = ko.computed(function(){
+    return self.questionCountSelected();
+  });
 
   self.clear = function(){
     this.questions.removeAll();
@@ -98,10 +103,10 @@ function ViewModel(){
         this.questions(questions);
   };
 
-  self.allQuestionsAnswered = ko.computed(function(){
+  self.questionsAnswered = ko.computed(function(){
     var answered = 0;
     for (var i = self.questions().length - 1; i >= 0; i--) {
-      if(self.questions()[i].givenAnswer() != 0){
+      if(self.questions()[i].givenAnswer() > 0){
         answered++;
       }
     };
