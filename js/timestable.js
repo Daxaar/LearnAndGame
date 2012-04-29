@@ -1,13 +1,14 @@
-﻿(function (lg, ko, $){
+/*
+(function (lg, ko, $) {
 	'use strict';
 
-    lg.Question = function (leftNumber, rightNumber, sign){
+    lg.Question = function (leftNumber, rightNumber, sign) {
 		var self = this;
 		self.left = ko.observable(leftNumber);
 		self.right = ko.observable(rightNumber);
 		self.sign = ko.observable(sign);
-	
-		self.correctAnswer = function(){
+
+		self.correctAnswer = function() {
 			if(self.sign() === "+"){
 				return self.left() + self.right();
 			}
@@ -19,7 +20,7 @@
 			}
 		
 		};
-	
+
 		self.givenAnswer = ko.observable("");
 		self.isCorrect = ko.dependentObservable(function() {
 				return self.correctAnswer() == self.givenAnswer();
@@ -76,8 +77,11 @@ var viewModel = {
 	timeTaken: function() {
 		return LearnAndGame.formatGameTime({startTime: this.startTime(), endTime: new Date().getTime()});
 	},
-	nextNumber: function(){
-        return Math.floor(Math.random() * this.numberBondsToSelected());
+	nextNumber: function(max){
+      if(max){
+        return Math.floor(Math.random() * max) + 1
+      }
+      return Math.floor(Math.random() * this.numberBondsToSelected());
     },
 
 	reset: function (settings){
@@ -165,7 +169,7 @@ viewModel.isComplete = ko.dependentObservable(function(){
 },viewModel);
 
 
-/* Custom Bindings */
+//Custom Bindings
 ko.bindingHandlers.toggleGrid = {
 	init: function(element, valueAccessor) {
 		$(element).css({opacity:1,display:'block'});
@@ -200,3 +204,4 @@ ko.bindingHandlers.animateVisible = {
         }
 	}
 };
+*/
