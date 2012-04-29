@@ -63,22 +63,24 @@
 </body>
 <script>
 
-var viewModel = {
+function ViewModel(){
 
-  questionCount         : ko.observableArray([10,20,30,40]),
-  questionCountSelected : ko.observable(40),
-  questions             : ko.observableArray([]),
-  answersVisible        : ko.observable(false),
-  timesTable            : ko.observable(6),
-  showAnswers           : function(){
+  var self = this;
+
+  self.questionCount         = ko.observableArray([10,20,30,40]);
+  self.questionCountSelected = ko.observable(40);
+  self.questions             = ko.observableArray([]);
+  self.answersVisible        = ko.observable(false);
+  self.timesTable            = ko.observable(6);
+  self.showAnswers           = function(){
     this.answersVisible(!this.answersVisible());
-  },
+  };
 
-  clear : function(){
+  self.clear = function(){
     this.questions.removeAll();
-  },
+  };
 
-  createQuestions : function(){
+  self.createQuestions = function(){
     this.clear();
     var i,j, m, q,timestable = this.timesTable(),questions = [];
 
@@ -94,18 +96,25 @@ var viewModel = {
         questions.push(q);
     }
         this.questions(questions);
-  }
+  };
 
+  self.allQuestionsAnswered = ko.computed(function(){
+    var answered = 0;
+    for (var i = self.questions().length - 1; i >= 0; i--) {
+      if(self.questions()[i].givenAnswer() != 0){
+        answered++;
+      }
+    };
+    return answered;
+  },this);
 
-};
+}
 
 function Question(left,right,operator) {
     this.left = parseInt(left);
     this.right = parseInt(right);
     this.operator = operator;
     this.givenAnswer = ko.observable(0);
-
-    //console.log('creating question');
 }
  
 function Addition(left,right){
@@ -140,8 +149,8 @@ Question.prototype.correctAnswer = function(){
 }
 
   $(document).ready(function(){
-      viewModel.createQuestions();
-      ko.applyBindings(viewModel);
+      ko.applyBindings(new ViewModel());
+
   });
 
 
