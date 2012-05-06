@@ -1,16 +1,17 @@
 <html>
 
+<head>
 <style>
 
   #board{
-    font-family: Consolas,Helvetica,Ariel;
+    font-family: Consolas, Helvetica, Ariel;
     margin:10px 10% 0 10%;
     width:80%;
   }
   .question{
     float:left;
     margin: 20px 10px 10px 0px;
-    font-family: Consolas,Helvetica,Ariel;
+    font-family: Consolas, Helvetica, Ariel;
     font-size:1.2em;
     border:1px solid black;
     padding:3px;
@@ -31,22 +32,25 @@
   }
 
   li input{
-    background-color:red
+    background-color:red;
   }
 
 </style>
 
 <script src="js/knockout-latest.debug.js"/></script>
-<script src="js/jquery/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="js/jquery/jquery-1.6.4.min.js"></script>
+</head>
 
 <body>
 
-  <input type="button" data-bind="click:clear" value="Clear"></button>
-  <input type="button" data-bind="click:showAnswers" value="Show Answers"></button>
+  <input type="button" data-bind="click:clear" value="Clear"/>
+  <input type="button" data-bind="click:showAnswers" value="Show Answers"/>
   <input type="text" data-bind="value:timesTable"/>
   <select data-bind="options: questionCount, value:questionCountSelected"></select>
-  <input type="button" data-bind="click:createQuestions" value="Create Questions"></button>
+  <input type="button" data-bind="click:createQuestions" value="Create Questions"/>
   <p data-bind="text: 'Questions answered: ' + questionsAnswered()"></p>
+  <p data-bind="text: 'Time remaining: ' + timeRemaining()"></p>
+
   <div id="board">
       <!-- ko foreach: questions-->
       <div class="question">
@@ -58,13 +62,13 @@
         <div data-bind="visible:$root.answersVisible, text:correctAnswer()"></div>
       </div>
       <!-- /ko -->
-    </ul>
   </div>
 
-</body>
 <script>
 
-function ViewModel(){
+function ViewModel() {
+
+  'use strict';
 
   var self = this;
 
@@ -72,7 +76,8 @@ function ViewModel(){
   self.questionCountSelected = ko.observable(40);
   self.questions             = ko.observableArray([]);
   self.answersVisible        = ko.observable(false);
-  self.timesTable            = ko.observable(6);
+  self.timesTable            = ko.observable(12);
+  self.timeRemaining         = ko.observable(180),
   self.showAnswers           = function(){
     this.answersVisible(!this.answersVisible());
   };
@@ -101,6 +106,15 @@ function ViewModel(){
         questions.push(q);
     }
         this.questions(questions);
+        self.timeRemaining(180);
+        self.countdown(180);
+  };
+
+  self.countdown = function() {
+    if(self.timeRemaining() !== 0) {
+      self.timeRemaining(self.timeRemaining() - 1);
+      setTimeout(self.countdown,1000);
+    }
   };
 
   self.questionsAnswered = ko.computed(function(){
@@ -119,7 +133,7 @@ function Question(left,right,operator) {
     this.left = parseInt(left);
     this.right = parseInt(right);
     this.operator = operator;
-    this.givenAnswer = ko.observable(0);
+    this.givenAnswer = ko.observable('');
 }
  
 function Addition(left,right){
@@ -157,7 +171,14 @@ Question.prototype.correctAnswer = function(){
       ko.applyBindings(new ViewModel());
 
   });
+//var counter;
+//(function loop(){
+//    counter--;
+//    console.log(counter);
+//    setInterval(loop,1000);
 
+//}());
 
 </script>
+</body>
 </html>
